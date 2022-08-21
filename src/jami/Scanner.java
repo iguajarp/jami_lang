@@ -66,7 +66,34 @@ class Scanner {
             case '*':
                 addToken(TokenType.START);
                 break;
+            case '!':
+                // * 6. Si el valor siguiente es igual a match, añade el token
+                // * correspondiente.||
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                break;
+            case '=':
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                break;
+            case '<':
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                break;
+            case '>':
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                break;
+
+            default:
+                Jami.error(line, "Unexpected character.");
         }
+    }
+
+    private boolean match(char expected) {
+        if (isAtEnd())
+            return false;
+        if (source.charAt(current) != expected)
+            return false;
+
+        current++;
+        return true;
     }
 
     private char advance() {
