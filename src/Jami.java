@@ -1,5 +1,3 @@
-package jami;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,7 +33,7 @@ public class Jami {
         BufferedReader reader = new BufferedReader(input);
 
         for (;;) {
-            System.out.println("> ");
+            System.out.print("> ");
             String line = reader.readLine();
             if (line == null) {
                 break;

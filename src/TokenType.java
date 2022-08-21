@@ -1,4 +1,3 @@
-package jami;
 
 public enum TokenType {
 
