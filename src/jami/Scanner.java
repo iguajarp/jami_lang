@@ -72,13 +72,13 @@ class Scanner {
                 addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
                 break;
             case '=':
-                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.EQUAL);
                 break;
             case '<':
-                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.LESS);
                 break;
             case '>':
-                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.BANG);
+                addToken(match('=') ? TokenType.BANG_EQUAL : TokenType.GREATER);
                 break;
 
             default:
