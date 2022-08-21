@@ -1,3 +1,5 @@
+package jami;
+
 class Token {
     final TokenType type;
     final String lexeme;

@@ -1,7 +1,9 @@
+package jami;
+
 public enum TokenType {
 
     // Single character token
-    LEFT_PREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
+    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
     COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, START,
 
     // One or two character token
