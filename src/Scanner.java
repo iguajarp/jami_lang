@@ -96,10 +96,33 @@ class Scanner {
             case '\n':
                 line++;
                 break;
+            case '"':
+                string();
+                break;
 
             default:
                 Jami.error(line, "Unexpected character.");
         }
+    }
+
+    private void string() {
+        while (peek() != '"' && !isAtEnd()) {
+            if (peek() == '\n')
+                line++;
+            advance();
+        }
+
+        if (isAtEnd()) {
+            Jami.error(line, "Unterminated string");
+            return;
+        }
+
+        advance();
+
+        // * current - 1, ya que advance avanza uno extra después de la comilla.
+        // * start + 1, ya que start es la comilla.
+        String value = source.substring(start + 1, current - 1);
+        addToken(TokenType.STRING, value);
     }
 
     private char peek() {
