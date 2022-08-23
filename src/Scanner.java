@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Scanner {
     private final String source;
@@ -8,6 +10,29 @@ class Scanner {
     private int start = 0;
     private int current = 0;
     private int line = 1;
+
+    private static final Map<String, TokenType> keywords;
+
+    // * 8. Define identificadores(palabras claves).
+    static {
+        keywords = new HashMap<>();
+        keywords.put("and", TokenType.AND);
+        keywords.put("class", TokenType.CLASS);
+        keywords.put("else", TokenType.ELSE);
+        keywords.put("false", TokenType.FALSE);
+        keywords.put("for", TokenType.FOR);
+        keywords.put("fun", TokenType.FUN);
+        keywords.put("if", TokenType.IF);
+        keywords.put("nil", TokenType.NIL);
+        keywords.put("or", TokenType.OR);
+        keywords.put("print", TokenType.PRINT);
+        keywords.put("return", TokenType.RETURN);
+        keywords.put("super", TokenType.SUPER);
+        keywords.put("this", TokenType.THIS);
+        keywords.put("true", TokenType.TRUE);
+        keywords.put("var", TokenType.VAR);
+        keywords.put("while", TokenType.WHILE);
+    }
 
     Scanner(String source) {
         // * 1. Entra el source code, cadenas de texto.
@@ -101,9 +126,12 @@ class Scanner {
                 break;
 
             default:
+                // * 7
                 if (isDigit(c)) {
                     number();
                 } else if (isAlpha(c)) {
+                    // * Solo importa si es un grupo alphanumerico. No revisa is es válido
+                    // * (por ahora)
                     identifier();
                 } else {
                     Jami.error(line, "Unexpected character.");
