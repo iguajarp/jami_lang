@@ -145,7 +145,14 @@ class Scanner {
         while (isAlphaNumeric(peek()))
             advance();
 
-        addToken(TokenType.IDENTIFIER);
+        // * 8. Revisa si la palabra es una palabra reservada.
+        String text = source.substring(start, current);
+        TokenType type = keywords.get(text);
+        // * null if la palabra no está en el HashMap.
+        if (type == null)
+            // * IDENTIFIER usado principalmente para variables.
+            type = TokenType.IDENTIFIER;
+        addToken(type);
     }
 
     private boolean isAlpha(char c) {
